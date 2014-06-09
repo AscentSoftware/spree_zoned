@@ -44,5 +44,5 @@ gem 'pry'
 
 # Spree ecommerce store
 gem 'spree', git: 'https://github.com/spree/spree'
-
+gem 'spree_auth_devise', git: 'https://github.com/spree/spree_auth_devise'
 gem 'spree_zoned', path: '../'
