@@ -5,6 +5,6 @@ gem 'sass-rails', git: 'https://github.com/rails/sass-rails'
 
 gem 'spree', git: 'https://github.com/spree/spree'
 # Provides basic authentication functionality for testing parts of your engine
-gem 'spree_auth_devise', github: 'spree/spree_auth_devise'
+gem 'spree_auth_devise', git: 'https://github.com/spree/spree_auth_devise'
 
 gemspec
