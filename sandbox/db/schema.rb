@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140609106078) do
+ActiveRecord::Schema.define(version: 20140619130824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -260,6 +260,7 @@ ActiveRecord::Schema.define(version: 20140609106078) do
     t.datetime "approved_at"
     t.boolean  "confirmation_delivered",                                     default: false
     t.boolean  "considered_risky",                                           default: false
+    t.string   "guest_token"
   end
 
   add_index "spree_orders", ["approver_id"], name: "index_spree_orders_on_approver_id", using: :btree
@@ -320,7 +321,6 @@ ActiveRecord::Schema.define(version: 20140609106078) do
     t.string   "identifier"
     t.string   "cvv_response_code"
     t.string   "cvv_response_message"
-    t.decimal  "uncaptured_amount",    precision: 10, scale: 2, default: 0.0
   end
 
   add_index "spree_payments", ["order_id"], name: "index_spree_payments_on_order_id", using: :btree
@@ -421,11 +421,13 @@ ActiveRecord::Schema.define(version: 20140609106078) do
   add_index "spree_promotion_action_line_items", ["variant_id"], name: "index_spree_promotion_action_line_items_on_variant_id", using: :btree
 
   create_table "spree_promotion_actions", force: true do |t|
-    t.integer "promotion_id"
-    t.integer "position"
-    t.string  "type"
+    t.integer  "promotion_id"
+    t.integer  "position"
+    t.string   "type"
+    t.datetime "deleted_at"
   end
 
+  add_index "spree_promotion_actions", ["deleted_at"], name: "index_spree_promotion_actions_on_deleted_at", using: :btree
   add_index "spree_promotion_actions", ["id", "type"], name: "index_spree_promotion_actions_on_id_and_type", using: :btree
   add_index "spree_promotion_actions", ["promotion_id"], name: "index_spree_promotion_actions_on_promotion_id", using: :btree
 
@@ -802,13 +804,14 @@ ActiveRecord::Schema.define(version: 20140609106078) do
     t.string   "authentication_token"
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "remember_created_at"
     t.datetime "reset_password_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "spree_api_key",          limit: 48
+    t.datetime "remember_created_at"
   end
 
+  add_index "spree_users", ["email"], name: "email_idx_unique", unique: true, using: :btree
   add_index "spree_users", ["spree_api_key"], name: "index_spree_users_on_spree_api_key", using: :btree
 
   create_table "spree_variants", force: true do |t|

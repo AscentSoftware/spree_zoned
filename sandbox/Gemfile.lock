@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/spree/spree
-  revision: 910f415c979940096165502b608e25ac211256c7
+  revision: 359497732bdb01bab9a093f4d05ad51f76543ba3
   specs:
     spree (2.3.0.beta)
       spree_api (= 2.3.0.beta)
@@ -26,7 +26,7 @@ GIT
     spree_backend (2.3.0.beta)
       jquery-rails (~> 3.1.0)
       jquery-ui-rails (~> 4.1.0)
-      select2-rails (~> 3.4.7)
+      select2-rails (~> 3.5.0)
       spree_api (= 2.3.0.beta)
       spree_core (= 2.3.0.beta)
     spree_cmd (2.3.0.beta)
@@ -49,7 +49,7 @@ GIT
       monetize
       paperclip (~> 4.1.1)
       paranoia (~> 2.0)
-      rails (~> 4.1.0)
+      rails (~> 4.1.1)
       ransack (~> 1.2.2)
       state_machine (= 1.2.0)
       stringex (~> 1.5.1)
@@ -79,7 +79,7 @@ PATH
   remote: ../
   specs:
     spree_zoned (2.3.0.beta)
-      spree_core (~> 2)
+      spree_core (~> 2.3.0.beta)
 
 GEM
   remote: https://rubygems.org/
@@ -209,7 +209,7 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.0)
-    minitest (5.3.4)
+    minitest (5.3.5)
     monetize (0.3.0)
       money (~> 6.1.0.beta1)
     money (6.1.1)
@@ -271,8 +271,7 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
-    select2-rails (3.4.9)
-      sass-rails
+    select2-rails (3.5.7)
       thor (~> 0.14)
     slop (3.5.0)
     spring (1.1.3)
