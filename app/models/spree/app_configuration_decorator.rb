@@ -4,14 +4,9 @@ Spree::AppConfiguration.class_eval do
   end
 
   # Returns the actual currency preference.
-  def default_currency
+  def original_currency_preference
     preferences.fetch(:currency) do
       preference_default(:currency)
     end
-  end
-
-  # Used to set the actual currency preference.
-  def default_currency=(iso_code)
-    set_preference(:currency, iso_code)
   end
 end
