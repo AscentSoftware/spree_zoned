@@ -10,6 +10,10 @@ module SpreeZoned
           Rails.configuration.cache_classes ? require(c) : load(c)
         end
       end
+
+      Dir.glob(File.join(File.dirname(__FILE__), "../app/**/spree_zoned/**/*.rb")) do |c|
+       Rails.configuration.cache_classes ? require(c) : load(c)
+      end
     end
 
     config.to_prepare &method(:activate).to_proc
