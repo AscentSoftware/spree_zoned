@@ -1,0 +1,16 @@
+<!-- insert_before 'div[data-hook="default"]' -->
+  <%
+    currencies = ::Money::Currency.table.map do |code, details|
+      iso = details[:iso_code]
+      [iso, "#{details[:name]} (#{iso})"]
+    end
+    currency_options = options_from_collection_for_select([["", "None"]] + currencies, :first, :last, zone_form.object.currency_iso_code)
+  %>
+  <%= zone_form.field_container :currency_iso_code do %>
+    <%= zone_form.label :currency_iso_code, Spree.t(:zone_currency) %><br />
+    <%= zone_form.select(:currency_iso_code, currency_options, {:class => 'fullwidth'}) %>
+    <br/><span class="info"><%= Spree.t(:zone_currency_explanation) %></span>
+  <% end %>
+  <script>
+    $('#zone_currency_iso_code').select2();
+  </script>
