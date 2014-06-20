@@ -1,6 +1,6 @@
 Spree::AppConfiguration.class_eval do
   def preferred_currency
-    return "GBP"
+    return Spree::Zone.default_currency
   end
 
   # Returns the actual currency preference.
