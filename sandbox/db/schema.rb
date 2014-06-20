@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619130824) do
+ActiveRecord::Schema.define(version: 20140620085204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -853,10 +853,11 @@ ActiveRecord::Schema.define(version: 20140619130824) do
   create_table "spree_zones", force: true do |t|
     t.string   "name"
     t.string   "description"
-    t.boolean  "default_tax",        default: false
-    t.integer  "zone_members_count", default: 0
+    t.boolean  "default_tax",                   default: false
+    t.integer  "zone_members_count",            default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "currency_iso_code",  limit: 10
   end
 
   add_index "spree_zones", ["default_tax"], name: "index_spree_zones_on_default_tax", using: :btree
