@@ -5,6 +5,10 @@ module SpreeZoned
     engine_name 'spree_zoned'
 
     def self.activate
+      Dir.glob(File.join(File.dirname(__FILE__), "active_zone/**/*.rb")) do |c|
+        require(c)
+      end
+
       ['../../app/**/*_decorator*.rb', '../../lib/**/*_decorator*.rb'].each do |path|
         Dir.glob(File.join(File.dirname(__FILE__), path)) do |c|
           Rails.configuration.cache_classes ? require(c) : load(c)
@@ -12,11 +16,8 @@ module SpreeZoned
       end
 
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/spree_zoned/**/*.rb")) do |c|
-       Rails.configuration.cache_classes ? require(c) : load(c)
+        Rails.configuration.cache_classes ? require(c) : load(c)
       end
-
-      active_zone = File.join(File.dirname(__FILE__), 'active_zone.rb')
-      Rails.configuration.cache_classes ? require(active_zone) : load(active_zone)
     end
 
     config.to_prepare &method(:activate).to_proc

@@ -1,6 +1,19 @@
 spree_zoned
 ===========
 
+Spree Zoned makes Spree stores international.
+
+By enhancing the Zone model to include a currency, customer's can be billed in their own currency.
+
+Products can easily have a price per currency.
+
+Customer's can choose their local Zone. The prices in the Store will be updated to reflect their local currency.
+
+### Accessing the active zone from views
+
+A view helper has been added to access the Zone for the current customer. `active_zone` returns the `Spree::Zone`
+chosen by the customer, or the default Zone configured for the store.
+
 Installation
 ------------
 
