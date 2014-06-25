@@ -14,6 +14,9 @@ module SpreeZoned
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/spree_zoned/**/*.rb")) do |c|
        Rails.configuration.cache_classes ? require(c) : load(c)
       end
+
+      active_zone = File.join(File.dirname(__FILE__), 'active_zone.rb')
+      Rails.configuration.cache_classes ? require(active_zone) : load(active_zone)
     end
 
     config.to_prepare &method(:activate).to_proc

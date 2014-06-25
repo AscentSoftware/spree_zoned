@@ -17,8 +17,7 @@ Spree::Core::ControllerHelpers::Order.class_eval do
         return order.currency
       end
 
-      zone_id = cookies[:spree_zoned_zone]
-      active_zone = Spree::Zone.find_by(id: zone_id)
+      active_zone = SpreeZoned::ActiveZone.get(cookies)
       if active_zone
         return active_zone.currency
       end

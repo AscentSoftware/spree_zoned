@@ -10,8 +10,11 @@ Spree::Order.class_eval do
   end
 
   def ensure_currency_matches_zone
-    shipping_zone = Spree::Zone.match(ship_address)
     self.currency = shipping_zone.currency
+  end
+
+  def shipping_zone
+    return Spree::Zone.match(ship_address)
   end
 
   # This method comes from the Spree::Order::CurrencyUpdater module.
