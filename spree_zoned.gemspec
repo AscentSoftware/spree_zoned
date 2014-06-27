@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'spree_core', '~> 2.3.0.beta'
+  s.add_dependency 'geoip2', '~> 0.0.2'
 end

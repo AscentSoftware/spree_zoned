@@ -30,5 +30,10 @@ module SpreeZoned
       c = File.join(File.dirname(__FILE__), '../../app/models/spree/app_configuration_decorator.rb')
       Rails.configuration.cache_classes ? require(c) : load(c)
     end
+
+    initializer "spree_zoned.add_middleware" do |app|
+      require_relative 'ip_lookup/detect_zone_middleware'
+      app.middleware.use SpreeZoned::IpLookup::DetectZoneMiddleware
+    end
   end
 end

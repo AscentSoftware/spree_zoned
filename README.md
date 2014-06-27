@@ -5,9 +5,12 @@ Spree Zoned makes Spree stores international.
 
 By enhancing the Zone model to include a currency, customer's can be billed in their own currency.
 
-Products can easily have a price per currency.
+Products can easily be configured to have a price per currency.
 
-Customer's can choose their local Zone. The prices in the Store will be updated to reflect their local currency.
+An IP to country lookup automatically configures the site to the correct zone. Customer's can override the Zone choice
+manually.
+
+The prices in the Store are displayed in the currency configured for the Active Zone.
 
 ### Accessing the active zone from views
 
@@ -28,6 +31,19 @@ Bundle your dependencies and run the installation generator:
 ```shell
 bundle
 bundle exec rails g spree_zoned:install
+```
+
+The geoip2 library must be correctly configured to enable the automatic zone discovery by IP address feature.
+
+The simplest way of configuring geoip2 is to create an initializer, in the config/initializers folder of your app, with
+the config below:
+
+```ruby
+Geoip2.configure do |conf|
+    # Available under 'My License Key' when signed in at maxmind.com.
+    conf.user_id = 'user id goes here'
+    conf.license_key = 'license key goes here'
+end
 ```
 
 Development
