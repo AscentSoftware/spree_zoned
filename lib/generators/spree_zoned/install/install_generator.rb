@@ -9,11 +9,6 @@ module SpreeZoned
         append_file 'vendor/assets/javascripts/spree/backend/all.js', "//= require spree/backend/spree_zoned\n"
       end
 
-      def add_stylesheets
-        inject_into_file 'vendor/assets/stylesheets/spree/frontend/all.css', " *= require spree/frontend/spree_zoned\n", :before => /\*\//, :verbose => true
-        inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css', " *= require spree/backend/spree_zoned\n", :before => /\*\//, :verbose => true
-      end
-
       def add_migrations
         run 'bundle exec rake railties:install:migrations FROM=spree_zoned'
       end
