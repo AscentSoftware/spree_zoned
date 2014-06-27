@@ -1,6 +1,6 @@
 Spree::Zone.class_eval do
   def currency
-    return currency_iso_code || Spree::Config.default_currency
+    return currency_iso_code || Spree::Config.original_currency_preference
   end
 
   def self.default_currency
