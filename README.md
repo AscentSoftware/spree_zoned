@@ -12,10 +12,11 @@ manually.
 
 The prices in the Store are displayed in the currency configured for the Active Zone.
 
-### Accessing the active zone from views
+### Accessing the active zone & country from views
 
-A view helper has been added to access the Zone for the current customer. `active_zone` returns the `Spree::Zone`
-chosen by the customer, or the default Zone configured for the store.
+There are view helpers available to access the Zone & Country for the current customer. `active_zone` returns the `Spree::Zone`
+chosen by the customer, or the default Zone configured for the store. `active_country' returns the `Spree::Country` detected
+for the customer, or the last country they selected for their shipping address at checkout.
 
 ### Zone selector
 

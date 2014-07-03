@@ -5,5 +5,7 @@ Spree::CheckoutController.class_eval do
     update_orig
 
     SpreeZoned::ActiveZone.set(cookies, @order.shipping_zone)
+    shipping_country = @order.ship_address && @order.ship_address.country
+    SpreeZoned::ActiveCountry.set(cookies, shipping_country)
   end
 end

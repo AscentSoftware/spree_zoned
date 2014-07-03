@@ -40,8 +40,9 @@ module SpreeZoned::IpLookup
         return
       end
 
-      logger.debug("IPLookup: Matched the IP #{ip} to the #{z.name} zone.")
+      logger.debug("IPLookup: Matched the IP #{ip} to the country '#{spree_country}' in the '#{z.name}' zone.")
       SpreeZoned::ActiveZone.set(request.cookie_jar, z)
+      SpreeZoned::ActiveCountry.set(request.cookie_jar, spree_country)
     end
 
     def logger

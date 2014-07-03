@@ -11,6 +11,7 @@ module Spree
 
       if zone
         SpreeZoned::ActiveZone.set(cookies, zone)
+        SpreeZoned::ActiveCountry.set(cookies, nil)
       end
 
       respond_to do |format|

@@ -9,6 +9,10 @@ module SpreeZoned
         require(c)
       end
 
+      Dir.glob(File.join(File.dirname(__FILE__), "active_country/**/*.rb")) do |c|
+        require(c)
+      end
+
       ['../../app/**/*_decorator*.rb', '../../lib/**/*_decorator*.rb'].each do |path|
         Dir.glob(File.join(File.dirname(__FILE__), path)) do |c|
           Rails.configuration.cache_classes ? require(c) : load(c)
