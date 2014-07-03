@@ -17,6 +17,16 @@ The prices in the Store are displayed in the currency configured for the Active 
 A view helper has been added to access the Zone for the current customer. `active_zone` returns the `Spree::Zone`
 chosen by the customer, or the default Zone configured for the store.
 
+### Zone selector
+
+Spree_zoned will automatically include the zone selector in the footer of a Spree store using the default layout.
+
+The zone selector is contained within a partial that can be included in any view with a simple `render partial:` call.
+
+```html+erb
+<%= render partial: 'spree_zoned/shared/zone_selector' %>
+```
+
 Installation
 ------------
 
