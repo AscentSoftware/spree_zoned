@@ -1,5 +1,6 @@
 require 'geoip2'
 require_relative 'address'
+require 'browser'
 
 module SpreeZoned::IpLookup
   class DetectZoneMiddleware
@@ -14,6 +15,16 @@ module SpreeZoned::IpLookup
 
     def set_zone(env)
       request = ActionDispatch::Request.new(env)
+      browser = Browser.new(
+        ua: request.user_agent,
+        accept_language: request.env["HTTP_ACCEPT_LANGUAGE"]
+      )
+
+      if browser.bot?
+        logger.debug("IPLookup: Skipping IP lookup as the visitor is a bot. Their user-agent string is '#{request.user_agent}'.")
+        return
+      end
+
       assigned_zone = SpreeZoned::ActiveZone.get(request.cookie_jar)
       if assigned_zone
         logger.debug("IPLookup: Skipping IP lookup as the visitor is already assigned to the '#{assigned_zone.name}' zone.")
