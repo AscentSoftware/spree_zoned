@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_zoned'
-  s.version     = '2.3.0.beta'
+  s.version     = '2.4.0.beta'
   s.summary     = 'Spree Zoned'
   s.description = 'A gem to enable switching of the default Zone'
   s.required_ruby_version = '>= 2.1'
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.3.0.beta'
+  s.add_dependency 'spree_core', '~> 2.4.0.beta'
   s.add_dependency 'geoip2', '~> 0.0.2'
   s.add_dependency 'browser', '~> 0.6'
 end
