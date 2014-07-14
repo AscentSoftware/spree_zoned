@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703152528) do
+ActiveRecord::Schema.define(version: 20140714104039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,16 +150,14 @@ ActiveRecord::Schema.define(version: 20140703152528) do
     t.integer  "variant_id"
     t.integer  "order_id"
     t.integer  "shipment_id"
-    t.integer  "return_authorization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "pending",                 default: true
+    t.boolean  "pending",      default: true
     t.integer  "line_item_id"
   end
 
   add_index "spree_inventory_units", ["line_item_id"], name: "index_spree_inventory_units_on_line_item_id", using: :btree
   add_index "spree_inventory_units", ["order_id"], name: "index_inventory_units_on_order_id", using: :btree
-  add_index "spree_inventory_units", ["return_authorization_id"], name: "index_spree_inventory_units_on_return_authorization_id", using: :btree
   add_index "spree_inventory_units", ["shipment_id"], name: "index_inventory_units_on_shipment_id", using: :btree
   add_index "spree_inventory_units", ["variant_id"], name: "index_inventory_units_on_variant_id", using: :btree
 
@@ -505,7 +503,6 @@ ActiveRecord::Schema.define(version: 20140703152528) do
   create_table "spree_return_authorizations", force: true do |t|
     t.string   "number"
     t.string   "state"
-    t.decimal  "amount",            precision: 10, scale: 2, default: 0.0, null: false
     t.integer  "order_id"
     t.text     "reason"
     t.datetime "created_at"
@@ -513,9 +510,17 @@ ActiveRecord::Schema.define(version: 20140703152528) do
     t.integer  "stock_location_id"
   end
 
-  add_index "spree_return_authorizations", ["number"], name: "index_spree_return_authorizations_on_number", using: :btree
-  add_index "spree_return_authorizations", ["order_id"], name: "index_spree_return_authorizations_on_order_id", using: :btree
-  add_index "spree_return_authorizations", ["stock_location_id"], name: "index_spree_return_authorizations_on_stock_location_id", using: :btree
+  create_table "spree_return_items", force: true do |t|
+    t.integer  "return_authorization_id"
+    t.integer  "inventory_unit_id"
+    t.integer  "exchange_variant_id"
+    t.datetime "received_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "pre_tax_amount",          precision: 10, scale: 2, default: 0.0, null: false
+    t.decimal  "included_tax_total",      precision: 10, scale: 2, default: 0.0, null: false
+    t.decimal  "additional_tax_total",    precision: 10, scale: 2, default: 0.0, null: false
+  end
 
   create_table "spree_roles", force: true do |t|
     t.string "name"
