@@ -1,7 +1,7 @@
 module SpreeZoned
   class Engine < Rails::Engine
     require 'spree/core'
-    isolate_namespace Spree
+    isolate_namespace SpreeZoned
     engine_name 'spree_zoned'
 
     def self.activate

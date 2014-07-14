@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714104039) do
+ActiveRecord::Schema.define(version: 20140714133649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -863,6 +863,13 @@ ActiveRecord::Schema.define(version: 20140714104039) do
 
   add_index "spree_zone_members", ["zone_id"], name: "index_spree_zone_members_on_zone_id", using: :btree
   add_index "spree_zone_members", ["zoneable_id", "zoneable_type"], name: "index_spree_zone_members_on_zoneable_id_and_zoneable_type", using: :btree
+
+  create_table "spree_zoned_zoned_stock_locations", id: false, force: true do |t|
+    t.integer "stock_location_id", null: false
+    t.integer "zone_id",           null: false
+  end
+
+  add_index "spree_zoned_zoned_stock_locations", ["stock_location_id", "zone_id"], name: "index_uniq_stock_location_id_by_zone_id", unique: true, using: :btree
 
   create_table "spree_zones", force: true do |t|
     t.string   "name"

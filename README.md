@@ -12,6 +12,10 @@ manually.
 
 The prices in the Store are displayed in the currency configured for the Active Zone.
 
+Stock locations are assigned to Zones. The stock available to a customer is based on the stock
+locations assigned to the customer's Zone. For example, with US and EU stock locations, the EU stock location would be
+chosen for a European customer and the US stock location for a customer ordering to the US.
+
 ### Accessing the active zone & country from views
 
 There are view helpers available to access the Zone & Country for the current customer. `active_zone` returns the `Spree::Zone`
