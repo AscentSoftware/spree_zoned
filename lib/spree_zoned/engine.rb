@@ -38,6 +38,9 @@ module SpreeZoned
     initializer "spree_zoned.add_middleware" do |app|
       require_relative 'ip_lookup/detect_zone_middleware'
       app.middleware.use SpreeZoned::IpLookup::DetectZoneMiddleware
+
+      require_relative 'active_zone/set_context_middleware'
+      app.middleware.insert_after SpreeZoned::IpLookup::DetectZoneMiddleware, SpreeZoned::SetContextMiddleware
     end
   end
 end

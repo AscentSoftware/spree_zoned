@@ -17,6 +17,7 @@ Spree::Core::ControllerHelpers::Order.class_eval do
         return order.currency
       end
 
+      # TODO: This should check if currency is nil and fall through if it is.
       active_zone = SpreeZoned::ActiveZone.get(cookies)
       if active_zone
         return active_zone.currency

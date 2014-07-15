@@ -4,7 +4,7 @@ module SpreeZoned
       belongs_to :zone, class_name: 'Spree::Zone'
       belongs_to :stock_location, class_name: 'Spree::StockLocation'
 
-      def self.match_by_zone(zone)
+      def self.stock_locations_for_zone(zone)
         return includes(:stock_location)
           .where(zone: zone, Spree::StockLocation.table_name => {active:true})
           .map(&:stock_location)
