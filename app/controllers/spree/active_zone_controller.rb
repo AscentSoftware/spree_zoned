@@ -10,7 +10,7 @@ module Spree
       end
 
       if zone
-        SpreeZoned::ActiveZone.set(cookies, zone)
+        SpreeZoned::ActiveZone::Session.current.set(zone)
         SpreeZoned::ActiveCountry.set(cookies, nil)
       end
 

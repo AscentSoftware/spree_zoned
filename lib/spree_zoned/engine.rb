@@ -5,9 +5,7 @@ module SpreeZoned
     engine_name 'spree_zoned'
 
     def self.activate
-      Dir.glob(File.join(File.dirname(__FILE__), "active_zone/**/*.rb")) do |c|
-        require(c)
-      end
+      require_relative 'active_zone/active_zone'
 
       Dir.glob(File.join(File.dirname(__FILE__), "active_country/**/*.rb")) do |c|
         require(c)
@@ -36,11 +34,11 @@ module SpreeZoned
     end
 
     initializer "spree_zoned.add_middleware" do |app|
-      require_relative 'ip_lookup/detect_zone_middleware'
-      app.middleware.use SpreeZoned::IpLookup::DetectZoneMiddleware
+      require_relative 'active_zone/active_zone'
+      app.middleware.use SpreeZoned::ActiveZone::SessionMiddleware
 
-      require_relative 'active_zone/set_context_middleware'
-      app.middleware.insert_after SpreeZoned::IpLookup::DetectZoneMiddleware, SpreeZoned::SetContextMiddleware
+      require_relative 'ip_lookup/detect_zone_middleware'
+      app.middleware.insert_after SpreeZoned::ActiveZone::SessionMiddleware, SpreeZoned::IpLookup::DetectZoneMiddleware
     end
   end
 end

@@ -25,7 +25,7 @@ module SpreeZoned::IpLookup
         return
       end
 
-      assigned_zone = SpreeZoned::ActiveZone.get(request.cookie_jar)
+      assigned_zone = SpreeZoned::ActiveZone::Session.current.get
       if assigned_zone
         logger.debug("IPLookup: Skipping IP lookup as the visitor is already assigned to the '#{assigned_zone.name}' zone.")
         return
@@ -52,7 +52,7 @@ module SpreeZoned::IpLookup
       end
 
       logger.debug("IPLookup: Matched the IP #{ip} to the country '#{spree_country}' in the '#{z.name}' zone.")
-      SpreeZoned::ActiveZone.set(request.cookie_jar, z)
+      SpreeZoned::ActiveZone::Session.set(z)
       SpreeZoned::ActiveCountry.set(request.cookie_jar, spree_country)
     end
 
