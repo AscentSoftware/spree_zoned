@@ -1,6 +1,10 @@
 Spree::Zone.class_eval do
   def currency
-    return currency_iso_code || Spree::Config.original_currency_preference
+    if currency_iso_code.to_s.empty?
+      return Spree::Config.original_currency_preference
+    end
+
+    return currency_iso_code
   end
 
   def self.default_currency
