@@ -8,3 +8,5 @@ en:
     default_zone_explanation: "The zone to default to when a visitor's zone is unknown."
     zone_currency: "Currency"
     zone_currency_explanation: "The currency of the store/checkout when a visitor is in this zone. The default currency is used if no currency is specified."
+    stock_location_select_zones: "Zones"
+    stock_location_select_zones_explanation: "The zones that this stock location serves. A stock location must have at least 1 zone."
