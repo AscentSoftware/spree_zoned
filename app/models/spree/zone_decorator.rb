@@ -7,11 +7,6 @@ Spree::Zone.class_eval do
     return currency_iso_code
   end
 
-  def self.default_currency
-    default_zone = default || new()
-    return default_zone.currency
-  end
-
   def self.default
     default_zone = find_by(id: SpreeZoned::Config[:default_zone_id])
     return default_zone || first
