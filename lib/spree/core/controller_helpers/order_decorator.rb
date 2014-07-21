@@ -4,7 +4,7 @@ Spree::Core::ControllerHelpers::Order.class_eval do
       return @request_currency
     end
 
-    order = @current_order || Spree::Order.find_by(completed_at: nil, guest_token: cookies.signed[:guest_token])
+    order = @current_order || Spree::Order.find_by(completed_at: nil, guest_token: cookies.signed[:guest_token], user_id: try_spree_current_user.try(:id))
     @request_currency = get_currency(order)
     return @request_currency
   end
