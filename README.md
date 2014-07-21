@@ -32,6 +32,24 @@ The zone selector is contained within a partial that can be included in any view
 <%= render partial: 'spree_zoned/shared/zone_selector' %>
 ```
 
+### Inclusive Tax Rates
+
+An inclusive tax rate is a tax rate that is marked as 'Included In Price'. A tax rate that might be modelled this way
+is UK VAT.
+
+Stores that want to use an inclusive tax rate need to be configured correctly.
+
+1. Mark a zone as the default tax zone. It doesn't matter which zone you select as the default. We will be unmarking it
+before we finish.
+  1. Admin -> Configuration -> Zones -> Edit Zone
+  2. Check 'Default Tax Zone' and save.
+2. Mark your inclusive tax rate as 'Included In Price'.
+  1. Admin -> Configuration -> Tax Rates -> Edit Tax Rate
+  2. Check 'Included In Price' and save.
+3. Remove the default tax zone.
+  1. Admin -> Configuration -> Zones -> Edit Zone marked as default. This should be the zone you marked in step 1.
+  2. Uncheck 'Default Tax Zone' and save.
+
 Installation
 ------------
 
