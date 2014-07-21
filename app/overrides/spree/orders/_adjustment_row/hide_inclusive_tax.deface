@@ -1,0 +1,11 @@
+# This override stops inclusive tax rates being displayed.
+
+Deface::Override.new(
+  virtual_path: "spree/orders/_adjustment_row",
+  name: "hide_inclusive_tax",
+  surround: "tr.adjustment",
+  text:
+"<% is_inclusive_tax = adjustments.all? {|a| a.source_type == 'Spree::TaxRate' && a.source.included_in_price? }
+    if is_inclusive_tax == false %>
+      <%= render_original %>
+ <% end %>")

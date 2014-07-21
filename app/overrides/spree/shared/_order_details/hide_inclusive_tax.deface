@@ -1,0 +1,13 @@
+# This override stops inclusive tax rates being displayed for incomplete orders.
+# The _order_details partial is used on both the checkout confirmation page and the
+# show order page. We want the tax rate to be shown on the show order page.
+
+Deface::Override.new(
+  virtual_path: "spree/shared/_order_details",
+  name: "hide_inclusive_tax",
+  surround: "[data-hook='order_details_tax_adjustments']",
+  text:
+"<% is_inclusive_tax = order.all_adjustments.tax.all? {|a| a.source_type == 'Spree::TaxRate' && a.source.included_in_price? }
+    if order.complete? || is_inclusive_tax == false %>
+      <%= render_original %>
+ <% end %>")
