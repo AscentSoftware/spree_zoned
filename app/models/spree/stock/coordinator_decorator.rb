@@ -1,9 +1,9 @@
 Spree::Stock::Coordinator.class_eval do
   def build_packages(packages = Array.new)
     stock_locations_for(order).each do |stock_location|
-      next unless stock_location.stock_items.where(:variant_id => order.line_items.pluck(:variant_id)).exists?
+      next unless stock_location.stock_items.where(:variant_id => inventory_units.map(&:variant_id)).exists?
 
-      packer = build_packer(stock_location, order)
+      packer = build_packer(stock_location, inventory_units)
       packages += packer.packages
     end
     packages
