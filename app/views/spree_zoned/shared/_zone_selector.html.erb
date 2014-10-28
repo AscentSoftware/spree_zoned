@@ -1,4 +1,4 @@
-<% if active_zone %>
+<% if defined? active_zone %>
   <%
     zones = Spree::Zone.all.map do |zone|
       [zone.id, zone.name]
