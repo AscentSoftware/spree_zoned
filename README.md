@@ -112,7 +112,7 @@ bundle exec rake db:seed
 bundle exec rake spree_sample:load
 
 # Start the web server
-rails s
+bundle exec rails s
 ```
 
 **Starting the sandbox**
@@ -120,11 +120,9 @@ rails s
 From then onwards you should be able to just run from the sandbox directory.
 
 ```shell
-rails s
+bundle exec rails s
 ```
 
-The port for the sandbox will be forwarded from port 30000 on your local machine.
-
-When the store is running you should be able to visit https://lvh.me:30000 to see the store running on the VM.
+The store should be accessible at https://192.168.109.2:3000.
 
 Copyright © 2014, 200 X Ltd trading as 200 Creative. All rights reserved.
