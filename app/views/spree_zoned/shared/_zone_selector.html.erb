@@ -1,7 +1,9 @@
-<%
-  zones = Spree::Zone.all.map do |zone|
-    [zone.id, zone.name]
-  end
-  zone_options = options_from_collection_for_select(zones, :first, :last, active_zone.id)
-%>
-<%= select_tag(:select_zone, zone_options, data: { href: set_active_zone_path(format: :json) }) %>
+<% if active_zone %>
+  <%
+    zones = Spree::Zone.all.map do |zone|
+      [zone.id, zone.name]
+    end
+    zone_options = options_from_collection_for_select(zones, :first, :last, active_zone.id)
+  %>
+  <%= select_tag(:select_zone, zone_options, data: { href: set_active_zone_path(format: :json) }) %>
+<% end %>
