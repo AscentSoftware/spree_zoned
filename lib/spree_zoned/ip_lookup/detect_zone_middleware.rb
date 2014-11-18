@@ -45,6 +45,8 @@ module SpreeZoned::IpLookup
         return
       end
 
+      SpreeZoned::ActiveCountry.set(request.cookie_jar, spree_country)
+
       z = Spree::Zone.match(Address.new(spree_country.id))
       if z.nil?
         logger.warn("IPLookup: Unable to match the country #{spree_country.id} #{spree_country.name} to a zone.")
@@ -53,7 +55,6 @@ module SpreeZoned::IpLookup
 
       logger.debug("IPLookup: Matched the IP #{ip} to the country '#{spree_country}' in the '#{z.name}' zone.")
       SpreeZoned::ActiveZone::Session.current.set(z)
-      SpreeZoned::ActiveCountry.set(request.cookie_jar, spree_country)
     rescue => e
       logger.error "IPLookup: Exception occured during ip lookup: #{e}"
     end
