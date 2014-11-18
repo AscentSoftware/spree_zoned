@@ -16,10 +16,7 @@ module SpreeZoned
 
       def get_or_default
         z = get
-        unless z
-          @current_zone = z = Spree::Zone.default
-        end
-        return z
+        return z || Spree::Zone.default
       end
 
       def set(zone)
