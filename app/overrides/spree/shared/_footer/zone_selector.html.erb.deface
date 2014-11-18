@@ -1,5 +1,4 @@
 <!-- insert_before '#footer-left' -->
 <div>
   <%= render partial: 'spree_zoned/shared/zone_selector' %>
-  <%= if active_country then active_country.name end %>
 </div>
