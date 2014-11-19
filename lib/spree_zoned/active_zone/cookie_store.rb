@@ -9,7 +9,6 @@ module SpreeZoned
 
       def self.set(cookies, zone)
         cookies[:spree_zoned_zone] = {
-          domain: :all,
           expires: 1.year.from_now,
           value: zone.id
         }

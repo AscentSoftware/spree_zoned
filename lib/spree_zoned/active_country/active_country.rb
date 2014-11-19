@@ -8,12 +8,11 @@ module SpreeZoned
 
     def self.set(cookies, country)
       if country.nil?
-        cookies.delete(:spree_zoned_country, domain: :all)
+        cookies.delete(:spree_zoned_country)
         return
       end
 
       cookies[:spree_zoned_country] = {
-        domain: :all,
         expires: 1.year.from_now,
         value: country.id
       }
