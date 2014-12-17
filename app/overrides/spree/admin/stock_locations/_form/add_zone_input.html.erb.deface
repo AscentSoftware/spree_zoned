@@ -1,17 +1,11 @@
-<!-- insert_bottom 'div[data-hook="admin_stock_locations_form_fields"] .row:first .alpha' -->
-<br />
-
+<!-- insert_after 'div[data-hook="admin_stock_locations_form_fields"] *[data-hook="stock_location_state"]' -->
 <%
 available_zones = Spree::Zone.all.map do |zone|
   [zone.id, "#{zone.name} (#{zone.description})"]
 end
 %>
 
-<div class="field">
-  <%= f.label :zone_ids, Spree.t(:stock_location_select_zones) %><br>
-  <%= f.collection_select :zone_ids, available_zones, :first, :last, {include_blank: true}, {class: 'fullwidth', multiple: true } %>
-  <br/><span class="info"><%= Spree.t(:stock_location_select_zones_explanation) %></span>
+<div class="form-group">
+  <%= f.label :zone_ids, Spree.t(:stock_location_select_zones) %>
+  <%= f.collection_select :zone_ids, available_zones, :first, :last, {include_blank: true}, {class: 'select2', multiple: true } %>
 </div>
-<script>
-  $('#stock_location_zone_ids').select2();
-</script>
