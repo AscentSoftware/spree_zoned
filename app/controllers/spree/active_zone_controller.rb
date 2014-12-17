@@ -19,8 +19,9 @@ module Spree
             end
 
             current_order.empty!
-            current_order.currency = zone.currency
             current_order.restart_checkout_flow
+            current_order.currency = zone.currency
+            current_order.save!
           end
         end
       end
