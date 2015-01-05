@@ -10,7 +10,13 @@ Spree::Order.class_eval do
   end
 
   def ensure_currency_matches_zone
-    self.currency = shipping_zone.currency
+    if state == 'address' && self[:currency] != shipping_zone.currency
+      adjustments.destroy_all
+      shipments.destroy_all
+
+      self[:currency] = shipping_zone.currency
+      save!
+    end
   end
 
   def shipping_zone
