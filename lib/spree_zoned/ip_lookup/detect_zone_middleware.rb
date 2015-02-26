@@ -31,7 +31,7 @@ module SpreeZoned::IpLookup
         return
       end
 
-      ip = request.remote_ip
+      ip = ENV['SPREE_ZONED_REMOTE_IP_OVERRIDE'] || request.remote_ip
 
       c = Geoip2.country(ip)
       if c.code || c.error
@@ -45,7 +45,7 @@ module SpreeZoned::IpLookup
         return
       end
 
-      SpreeZoned::ActiveCountry.set(request.cookie_jar, spree_country)
+      SpreeZoned::ActiveCountry::Session.current.set(spree_country)
 
       z = Spree::Zone.match(Address.new(spree_country.id))
       if z.nil?
