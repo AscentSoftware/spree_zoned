@@ -7,10 +7,6 @@ module SpreeZoned
     def self.activate
       require_relative 'active_zone/active_zone'
 
-      Dir.glob(File.join(File.dirname(__FILE__), "active_country/**/*.rb")) do |c|
-        require(c)
-      end
-
       ['../../app/**/*_decorator*.rb', '../../lib/**/*_decorator*.rb'].each do |path|
         Dir.glob(File.join(File.dirname(__FILE__), path)) do |c|
           Rails.configuration.cache_classes ? require(c) : load(c)
@@ -34,6 +30,9 @@ module SpreeZoned
     end
 
     initializer "spree_zoned.add_middleware" do |app|
+      require_relative 'active_country/active_country'
+      app.middleware.use SpreeZoned::ActiveCountry::SessionMiddleware
+
       require_relative 'active_zone/active_zone'
       app.middleware.use SpreeZoned::ActiveZone::SessionMiddleware
 

@@ -6,7 +6,7 @@ module Spree
 
       if zone
         SpreeZoned::ActiveZone::Session.current.set(zone)
-        SpreeZoned::ActiveCountry.set(cookies, nil)
+        SpreeZoned::ActiveCountry::Session.current.set(nil)
 
         if current_order
           ActiveRecord::Base.transaction do

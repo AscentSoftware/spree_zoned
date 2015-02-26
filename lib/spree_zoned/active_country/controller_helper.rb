@@ -7,7 +7,7 @@ module SpreeZoned
     end
 
     def active_country
-      return SpreeZoned::ActiveCountry.get(cookies)
+      return SpreeZoned::ActiveCountry::Session.current.get
     end
   end
 end
