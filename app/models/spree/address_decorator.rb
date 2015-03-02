@@ -17,12 +17,12 @@ Spree::Address.class_eval do
 
   # Override to set the active country for the default address
   # Returns an address with the country set to either; the active country;
-  # the first country for the active zone; or the default country.
+  # the first country for the active zone or the default zone.
   def self.build_default
     country = SpreeZoned::ActiveCountry::Session.current.get
     if country == nil
-      zone = SpreeZoned::ActiveZone::Session.current.get
-      country = (zone && zone.country_list.first) || Spree::Country.default
+      zone = SpreeZoned::ActiveZone::Session.current.get_or_default
+      country = (zone && zone.country_list.first)
     end
 
     return new(country: country)
