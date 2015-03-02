@@ -39,9 +39,9 @@ module SpreeZoned::IpLookup
         return
       end
 
-      spree_country = Spree::Country.find_by(name: c.country.names.en)
+      spree_country = Spree::Country.find_by(iso: c.country.iso_code)
       if spree_country.nil?
-        logger.warn("IPLookup: The country returned by geoip2 #{c.country.names.en} did not match any countries in Spree.")
+        logger.warn("IPLookup: The country returned by geoip2 #{c.country.names.en} iso:#{c.country.iso_code} did not match any countries in Spree.")
         return
       end
 
