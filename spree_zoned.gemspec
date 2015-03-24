@@ -2,16 +2,16 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_zoned'
-  s.version     = '2.4.0.beta'
+  s.version     = '3.0.0'
   s.summary     = 'Spree Zoned'
   s.description = 'A gem to enable switching of the default Zone'
-  s.required_ruby_version = '>= 2.1'
+  s.required_ruby_version = '>= 2.2'
 
   s.author    = '200 Creative Ltd'
-  # s.email     = 'you@example.com'
+  s.email     = 'matt.fenelon@200creative.com'
   s.homepage  = 'http://200creative.com'
 
-  #s.files       = `git ls-files`.split("\n")
+  s.files        = Dir["{lib,app,config,db,bin}/**/*", "LICENSE", "*.md"]
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'

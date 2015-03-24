@@ -1,11 +1,15 @@
-<fieldset>
-  <legend><%= variant.sku %> (<%= variant.is_master? ? Spree.t(:master) : variant.options_text.blank? ? Spree.t(:variant) : variant.options_text %>)</legend>
-  <% ['GBP', 'USD', 'EUR'].map { |code| ::Money::Currency.find(code) }.each do |currency| %>
-    <% code  = currency.iso_code %>
-    <% price = variant.price_in(code) %>
-    <div class="form-group">
-      <%= label_tag "vp[#{variant.id}][#{code}]", code %>
-      <%= text_field_tag "vp[#{variant.id}][#{code}]", (price ? price.display_amount.money : '') %>
-    </div>
-  <% end %>
-</fieldset>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="panel-title"><%= variant.name %> <%= variant.sku %> (<%= variant.is_master? ? Spree.t(:master) : variant.options_text.blank? ? Spree.t(:variant) : variant.options_text %>)</h1>
+  </div>
+  <div class="panel-body">
+    <% ['GBP', 'USD', 'EUR'].map { |code| ::Money::Currency.find(code) }.each do |currency| %>
+      <% code  = currency.iso_code %>
+      <% price = variant.price_in(code) %>
+      <div class="form-group">
+        <%= label_tag "vp[#{variant.id}][#{code}]", code %>
+        <%= text_field_tag "vp[#{variant.id}][#{code}]", (price ? price.display_amount.money : ''), class: ['form-control'] %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,8 +1,12 @@
-<!-- insert_before 'fieldset[class~="general"] div[class="row"]' -->
-<div class="field">
-  <%= label_tag :default_zone_id, Spree.t(:choose_default_zone) %><br>
-  <%= select_tag :default_zone_id, zone_options, :class => 'fullwidth' %>
-  <br/><span class="info"><%= Spree.t(:default_zone_explanation) %></span>
+<!-- insert_top 'fieldset[class~="general"]' -->
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <%= label_tag :default_zone_id, Spree.t(:default_zone) %><br>
+      <%= select_tag :default_zone_id, zone_options %>
+      <div class="alert alert-info"><%= Spree.t(:default_zone_explanation) %></div>
+    </div>
+  </div>
 </div>
 <script>
   $('#default_zone_id').select2();

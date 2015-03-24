@@ -4,8 +4,10 @@
 en:
   spree:
     prices: "Prices"
-    choose_default_zone: "Choose default zone"
-    default_zone_explanation: "The zone to default to when a visitor's zone is unknown."
+    default_zone: "Default zone"
+    default_zone_explanation: "Visitors default to this zone when their zone cannot be detected."
     zone_currency: "Currency"
     zone_currency_explanation: "The currency of the store/checkout when a visitor is in this zone. The default currency is used if no currency is specified."
     stock_location_select_zones: "Zones Served"
+    notice:
+      prices_saved: Prices saved
