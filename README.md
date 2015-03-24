@@ -34,7 +34,7 @@ The zone selector is contained within a partial that can be included in any view
 
 ### Inclusive Tax Rates
 
-An inclusive tax rate is a tax rate that is marked as 'Included In Price'. A tax rate that might be modelled this way
+An inclusive tax rate is a tax rate that is marked as 'Included In Price'. A tax rate that might be modeled this way
 is UK VAT.
 
 Stores that want to use an inclusive tax rate need to be configured correctly.
@@ -125,4 +125,4 @@ bundle exec rails s
 
 The store should be accessible at https://192.168.109.2:3000.
 
-Copyright © 2014, 200 X Ltd trading as 200 Creative. All rights reserved.
+Copyright © 2015, 200 X Ltd trading as 200 Creative. All rights reserved.
