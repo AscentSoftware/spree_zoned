@@ -12,10 +12,13 @@ Spree::Order.class_eval do
   def ensure_currency_matches_zone
     if state == 'address' && self[:currency] != shipping_zone.currency
       adjustments.destroy_all
-      shipments.destroy_all
-
-      self[:currency] = shipping_zone.currency
+      self.currency = shipping_zone.currency
       save!
+
+      persist_totals
+      Spree::PromotionHandler::Cart.new(self).activate
+      ensure_updated_shipments
+      persist_totals
     end
   end
 
