@@ -56,7 +56,7 @@ Installation
 Add spree_zoned to your Gemfile:
 
 ```ruby
-gem 'spree_zoned', git: 'https://github.com/A-James/spree_zoned'
+gem 'spree_zoned', git: 'https://github.com/Purepoint/spree_zoned'
 ```
 
 Bundle your dependencies and run the installation generator:
@@ -124,5 +124,3 @@ bundle exec rails s
 ```
 
 The store should be accessible at https://192.168.109.2:3000.
-
-Copyright © 2015, 200 X Ltd trading as 200 Creative. All rights reserved.
