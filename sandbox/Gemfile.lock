@@ -77,12 +77,12 @@ GIT
       spree_core (~> 2.4.0.beta)
 
 PATH
-  remote: ../
+  remote: ..
   specs:
-    spree_zoned (2.4.0.beta)
+    spree_zoned (3.0.0)
       browser (~> 0.6)
       geoip2 (~> 0.0.2)
-      spree_core (~> 2.4.0.beta)
+      spree_core
 
 GEM
   remote: https://rubygems.org/
@@ -137,7 +137,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    browser (0.7.0)
+    browser (0.9.1)
     builder (3.2.2)
     callsite (0.0.11)
     camertron-eprun (1.1.0)
@@ -178,26 +178,33 @@ GEM
     devise-encryptable (0.1.2)
       devise (>= 2.1.0)
     erubis (2.7.0)
-    ethon (0.7.1)
-      ffi (>= 1.3.0)
+    ethon (0.14.0)
+      ffi (>= 1.15.0)
     execjs (2.2.2)
-    faraday (0.9.0)
+    faraday (1.4.1)
+      faraday-excon (~> 1.1)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.1)
       multipart-post (>= 1.2, < 3)
-    faraday_middleware (0.9.1)
-      faraday (>= 0.7.4, < 0.10)
+      ruby2_keywords (>= 0.0.4)
+    faraday-excon (1.1.0)
+    faraday-net_http (1.0.1)
+    faraday-net_http_persistent (1.1.0)
+    faraday_middleware (1.0.0)
+      faraday (~> 1.0)
     ffaker (1.25.0)
-    ffi (1.9.6)
+    ffi (1.15.0)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
-    geoip2 (0.0.2)
+    geoip2 (0.0.3)
       activesupport
       faraday
       faraday_middleware
-      rash
+      hashie
       typhoeus
-    hashie (2.0.5)
+    hashie (4.1.0)
     highline (1.6.21)
     hike (1.2.3)
     htmlentities (4.3.2)
@@ -225,7 +232,7 @@ GEM
       railties (>= 3.0.0, < 5.0.0)
     method_source (0.8.2)
     mime-types (2.4.3)
-    mini_portile (0.6.0)
+    mini_portile2 (2.1.0)
     minitest (5.4.2)
     monetize (0.4.1)
       money (~> 6.2.1)
@@ -233,9 +240,9 @@ GEM
       i18n (>= 0.6.4, <= 0.7.0.dev)
     multi_json (1.10.1)
     multi_xml (0.5.5)
-    multipart-post (2.0.0)
-    nokogiri (1.6.3.1)
-      mini_portile (= 0.6.0)
+    multipart-post (2.1.1)
+    nokogiri (1.6.8.1)
+      mini_portile2 (~> 2.1.0)
     offsite_payments (2.0.1)
       active_utils (~> 2.2.0)
       activesupport (>= 3.2.14, < 5.0.0)
@@ -297,10 +304,9 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.1)
-    rash (0.4.0)
-      hashie (~> 2.0.0)
     rdoc (4.1.2)
       json (~> 1.4)
+    ruby2_keywords (0.0.4)
     sass (3.4.6)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
@@ -328,8 +334,8 @@ GEM
       cldr-plurals-runtime-rb (~> 1.0.0)
       json
       tzinfo
-    typhoeus (0.6.9)
-      ethon (>= 0.7.1)
+    typhoeus (1.4.0)
+      ethon (>= 0.9.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.5.3)
